@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Water Demand Forecasting</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+<h2>Urban + Rural Water Demand Forecasting</h2>
+<form method="POST">
+<input type="number" name="urban_pop" placeholder="Urban Population" required>
+<input type="number" name="rural_pop" placeholder="Rural Population" required>
+<input type="number" name="urban_lpcd" placeholder="Urban LPCD" required>
+<input type="number" name="rural_lpcd" placeholder="Rural LPCD" required>
+<input type="number" name="growth" placeholder="Growth Rate (%)" required>
+<input type="number" name="years" placeholder="Design Years" required>
+<button type="submit">Calculate</button>
+</form>
+
+{% if result %}
+<div class="result">
+<p>Urban Demand: {{ result.urban_demand }} m3/day</p>
+<p>Rural Demand: {{ result.rural_demand }} m3/day</p>
+<p>Total Demand: {{ result.total_demand }} m3/day</p>
+<p>ESR Capacity (40%): {{ result.esr_capacity }} m3</p>
+<p>Pipe Diameter: {{ result.pipe_diameter }} mm</p>
+<img src="{{ url_for('static', filename='chart.png') }}" width="100%">
+<br><br>
+<a href="/download"><button>Download Excel Report</button></a>
+</div>
+{% endif %}
+</div>
+</body>
+</html>
