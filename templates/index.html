@@ -21,11 +21,11 @@
 
 {% if result %}
 <div class="result">
-<p>Urban Demand: {{ result.urban_demand }} m3/day</p>
-<p>Rural Demand: {{ result.rural_demand }} m3/day</p>
-<p>Total Demand: {{ result.total_demand }} m3/day</p>
-<p>ESR Capacity (40%): {{ result.esr_capacity }} m3</p>
-<p>Pipe Diameter: {{ result.pipe_diameter }} mm</p>
+<p>Urban Demand: {{ result.urban_demand | round(2) }} m3/day</p>
+<p>Rural Demand: {{ result.rural_demand | round(2) }} m3/day</p>
+<p>Total Demand: {{ result.total_demand | round(2) }} m3/day</p>
+<p>ESR Capacity (40%): {{ result.esr_capacity | round(2) }} m3</p>
+<p>Pipe Diameter: {{ result.pipe_diameter | round(2) }} mm</p>
 <img src="{{ url_for('static', filename='chart.png') }}" width="100%">
 <br><br>
 <a href="/download"><button>Download Excel Report</button></a>
